@@ -60,5 +60,3 @@ The lab simulates a real-world corporate network including Active Directory, Gro
 
 ## Author
 Ahmed Bamakhram
-## Architecture
-![Network Diagram](architecture/network-diagram.png)
