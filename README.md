@@ -49,7 +49,7 @@ The lab simulates a real-world corporate network including Active Directory, Gro
 ---
 
 ## Technologies Used
-- Windows Server 2016
+- Windows Server 2025
 - Windows 10/11
 - VMware Workstation Pro
 - Microsoft Azure (Entra ID)
