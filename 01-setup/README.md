@@ -13,6 +13,10 @@
 - Domain Controller (Windows Server 2016)
 - Client Machine (Windows 10/11)
 
+### Operating Systems
+- Windows Server 2016 (for Active Directory Domain Services)
+- Windows 10/11 (client device)
+
 ### Network Configuration
 - Configured internal virtual network
 - Assigned static IP to Domain Controller
@@ -20,7 +24,7 @@
 
 ### Tools & Software
 - VMware Workstation Pro
-- Windows Server ISO
+- Windows Server 2016 ISO
 - Windows 10/11 ISO
 
 ### Validation
