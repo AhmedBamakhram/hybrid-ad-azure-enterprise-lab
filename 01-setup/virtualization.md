@@ -17,7 +17,7 @@ We installed the latest available version, **25H2u1**, to ensure:
 
 - Up-to-date features  
 - Bug fixes and performance improvements  
-- Maximum compatibility with modern Windows operating systems (Windows 10/11)  
+- Maximum compatibility with modern Windows operating systems (Windows 10/11)
 
 ## Summary
 
