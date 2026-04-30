@@ -10,7 +10,7 @@
 - Storage: SSD with at least 100 GB free space
 
 ### Virtual Machines Created
-- Domain Controller (Windows Server 2016)
+- Domain Controller (Windows Server 2022)
 - Client Machine (Windows 10/11)
 
 ### Operating Systems
@@ -35,7 +35,7 @@
 
 ### Tools & Software
 - VMware Workstation Pro
-- Windows Server 2016 ISO
+- Windows Server 2022 ISO
 - Windows 10/11 ISO
 
 ### Validation
