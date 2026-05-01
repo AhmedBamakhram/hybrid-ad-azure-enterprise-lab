@@ -55,8 +55,6 @@ This section documents the process of creating and installing a Windows Server 2
 - Enable:
   - Connected
   - Connect at power on
-- Set connection type: **IDE**  
-  (Improves compatibility during installation)
 
 ---
 
@@ -91,14 +89,6 @@ This section documents the process of creating and installing a Windows Server 2
 ### 8. Administrator Setup
 - Set Administrator password
 - Log in to system
-
----
-
-## Notes
-
-- ISO must be complete (~5.5 GB) to avoid installation errors
-- CD/DVD should use IDE during installation to prevent compatibility issues
-- Floppy drive should be removed to avoid boot and setup errors
 
 ---
 
