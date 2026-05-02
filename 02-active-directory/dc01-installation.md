@@ -8,6 +8,7 @@ This section documents the process of creating and installing a Windows Server 2
 ## Virtual Machine Creation
 
 ### 1. Create New VM
+![VM Setup](images/dc01-install-01-vm.png)
 - Open VMware Workstation Pro
 - Select: **Create a New Virtual Machine**
 - Choose: **Typical (Recommended)**
