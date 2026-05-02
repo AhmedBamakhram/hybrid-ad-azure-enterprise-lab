@@ -78,44 +78,25 @@ Subnet Mask: 255.255.255.0
 DNS Server: 10.10.10.10
 
 ```
-#  Active Directory Domain Services (AD DS) Installation
+# 🧱 Active Directory Domain Services (AD DS) Installation
 
-![Review](images/dc01-ad-02-deployment-config.png)
+## 1. Install AD DS Role
 
-![Review](images/dc01-ad-03-domain-name.png)
+![Deployment Config](images/dc01-ad-02-deployment-config.png)
 
-![Review](images/ddc01-ad-04-dns-options.png)
-
-![Review](images/dc01-ad-05-netbios.png)
-
-![Review](images/dc01-ad-05-netbios.png)
-
-![Review](images/dc01-ad-07-review-options.png)
-
-- Review all configuration settings before installation
-- Ensure everything is correct
+- Open **Server Manager**
+- Click **Manage → Add Roles and Features**
+- Select **Active Directory Domain Services**
+- Click **Add Features → Install**
 
 ---
 
-![Prereq Check](images/dc01-ad-08-prereq-check.png)
+## 2. Configure Domain (New Forest)
 
-- Verify prerequisite checks
-- Ignore warnings if no critical errors are present
+![Domain Name](images/dc01-ad-03-domain-name.png)
 
----
+- Select **Add a new forest**
+- Root domain:
 
-This is the **actual step where Active Directory is installed**.
-
-- Click **Install**
-- The system will:
-  - Promote DC01 to a Domain Controller
-  - Install Active Directory Domain Services
-  - Configure DNS automatically
-  - Create the domain `lab.local`
-
----
-
-### After Installation
-
-- The server will restart automatically
-- Active Directory is now fully installed and configured
+```plaintext
+lab.local
