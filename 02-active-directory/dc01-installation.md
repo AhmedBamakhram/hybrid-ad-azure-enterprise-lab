@@ -80,15 +80,15 @@ DNS Server: 10.10.10.10
 ```
 #  Active Directory Domain Services (AD DS) Installation
 
-![Review](images/dc01-ad-02-deployment-config)
+![Review](images/dc01-ad-02-deployment-config.png)
 
-![Review](images/dc01-ad-03-domain-name)
+![Review](images/dc01-ad-03-domain-name.png)
 
-![Review](images/ddc01-ad-04-dns-options)
+![Review](images/ddc01-ad-04-dns-options.png)
 
-![Review](images/dc01-ad-05-netbios)
+![Review](images/dc01-ad-05-netbios.png)
 
-![Review](images/dc01-ad-05-netbios)
+![Review](images/dc01-ad-05-netbios.png)
 
 ![Review](images/dc01-ad-07-review-options.png)
 
