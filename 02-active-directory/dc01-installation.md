@@ -57,7 +57,7 @@ This document outlines the complete process of building a Windows Server 2022 Do
 # ⚠️ Pre-Installation Configuration
 
 ### Remove Floppy Drive
-- VM Settings → Remove Floppy  
+- VM Settings → Remove Floppy  or power off connection
 - Prevents installation errors  
 
 ### Configure ISO
@@ -76,3 +76,36 @@ This document outlines the complete process of building a Windows Server 2022 Do
 IP Address: 10.10.10.10
 Subnet Mask: 255.255.255.0
 DNS Server: 10.10.10.10
+
+```
+#  Active Directory Domain Services (AD DS) Installation
+
+![Review](images/dc01-ad-07-review-options.png)
+
+- Review all configuration settings before installation
+- Ensure everything is correct
+
+---
+
+![Prereq Check](images/dc01-ad-08-prereq-check.png)
+
+- Verify prerequisite checks
+- Ignore warnings if no critical errors are present
+
+---
+
+This is the **actual step where Active Directory is installed**.
+
+- Click **Install**
+- The system will:
+  - Promote DC01 to a Domain Controller
+  - Install Active Directory Domain Services
+  - Configure DNS automatically
+  - Create the domain `lab.local`
+
+---
+
+### After Installation
+
+- The server will restart automatically
+- Active Directory is now fully installed and configured
