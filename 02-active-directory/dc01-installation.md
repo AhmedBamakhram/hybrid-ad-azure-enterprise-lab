@@ -91,12 +91,19 @@ DNS Server: 10.10.10.10
 
 ---
 
-## 2. Configure Domain (New Forest)
+## 2. Promote Server to Domain Controller
+
+- Click the notification flag in Server Manager
+- Select **Promote this server to a domain controller**
+
+---
+
+## 3. Deployment Configuration
 
 ![Domain Name](images/dc01-ad-03-domain-name.png)
 
 - Select **Add a new forest**
-- Root domain:
+- Root domain name:
 
 ```plaintext
 lab.local
