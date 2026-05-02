@@ -8,22 +8,34 @@ This section documents the process of creating and installing a Windows Server 2
 ## Virtual Machine Creation
 
 ### 1. Create New VM
+
 ![VM Setup](images/dc01-install-01-vm.png)
+
 - Open VMware Workstation Pro
 - Select: **Create a New Virtual Machine**
 - Choose: **Typical (Recommended)**
 
-### 2. Installation Method
-- Select: **I will install the operating system later**
-  - (Avoids VMware Easy Install issues)
+### 2. Boot from ISO
 
-### 3. Guest Operating System
-- OS: Microsoft Windows
-- Version: Windows Server 2022
+![Boot Screen](images/dc01-install-02-boot.png)
 
-### 4. VM Name and Location
-- Name: `DC01`
-- Location: `D:\VMs\DC01\` (or `C:\VMs\DC01\`)
+- Power on virtual machine
+- Press **ESC** to open boot menu
+- Select: **CD/DVD Drive**
+
+### 3. Windows Setup
+
+![Setup Screen](images/dc01-install-03-setup.png)
+
+- Select language and keyboard → Next
+- Click: Install Now
+
+### 4. Windows Installed
+
+![Desktop](images/dc01-install-04-desktop.png)
+
+- Windows Server installation completed
+- Login with Administrator account
 
 ---
 
@@ -59,40 +71,81 @@ This section documents the process of creating and installing a Windows Server 2
 
 ---
 
-## Installation Steps
+## Active Directory Installation
 
-### 1. Start VM
-- Power on virtual machine
-- Press **ESC** to open boot menu
-- Select: **CD/DVD Drive**
+### 1. Add AD DS Role
 
-### 2. Boot from ISO
-- Press any key when prompted:
-  - “Press any key to boot from CD/DVD”
+![Deployment Config](images/dc01-ad-02-deployment-config.png)
 
-### 3. Windows Setup
-- Select language and keyboard → Next
-- Click: Install Now
+- Open Server Manager
+- Click **Add Roles and Features**
+- Select **Active Directory Domain Services**
 
-### 4. Product Key
-- Select: **I don’t have a product key**
+---
 
-### 5. Edition Selection
-- Choose:
-  **Windows Server 2022 Standard Evaluation (Desktop Experience)**
+### 2. Configure Domain
 
-### 6. Disk Selection
-- Select virtual disk → Next
+![Domain Name](images/dc01-ad-03-domain-name.png)
 
-### 7. Installation
-- Wait for installation to complete
+- Select: **Add a new forest**
+- Root domain name: `lab.local`
 
-### 8. Administrator Setup
-- Set Administrator password
-- Log in to system
+---
+
+### 3. DNS Options
+
+![DNS Options](images/dc01-ad-04-dns-options.png)
+
+- Leave default settings
+- Ignore delegation warning (normal in lab)
+
+---
+
+### 4. NetBIOS Name
+
+![NetBIOS](images/dc01-ad-05-netbios.png)
+
+- Confirm NetBIOS name: `LAB`
+
+---
+
+### 5. AD Paths
+
+![Paths](images/dc01-ad-06-paths.png)
+
+- Keep default paths:
+  - `C:\Windows\NTDS`
+  - `C:\Windows\SYSVOL`
+
+---
+
+### 6. Review Configuration
+
+![Review](images/dc01-ad-07-Review Options.png)
+
+- Review all settings before installation
+
+---
+
+### 7. Prerequisites Check
+
+![Prereq Check](images/dc01-ad-08-prereq-check.png)
+
+- Ensure all checks pass
+- Ignore warnings if no critical errors
+
+---
+
+### 8. Domain Login
+
+![Login](images/dc01-ad-09-login-domain.png)
+
+- Server restarts after installation
+- Login using:
+  - `LAB\Administrator`
 
 ---
 
 ## Outcome
 
-A clean Windows Server 2022 virtual machine (DC01) is successfully installed and ready for further configuration (networking, static IP, Active Directory setup).
+A fully configured Windows Server 2022 Domain Controller (DC01) with Active Directory Domain Services installed and ready for further configuration (Group Policy, users, domain join, etc.).
