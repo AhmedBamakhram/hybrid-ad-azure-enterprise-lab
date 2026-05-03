@@ -26,6 +26,8 @@ Open:
 ```plaintext
 Edit → Virtual Network Editor
 
+---
+
 ## Notes
 
 - VMware Workstation does not support native VLAN tagging (802.1Q)
