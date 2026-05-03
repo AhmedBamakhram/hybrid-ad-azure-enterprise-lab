@@ -29,3 +29,13 @@ Open VMware Workstation Pro:
 
 ```plaintext
 Edit → Virtual Network Editor
+
+---
+
+## Notes
+
+- VMware Workstation does not support native VLAN tagging (802.1Q)
+- VLAN segmentation is simulated using separate VMnet networks
+- Each VMnet functions as an isolated Layer 2 network
+- Inter-network communication is restricted by default
+- Routing between VLANs will be implemented using a routing solution (e.g., RRAS or pfSense)
