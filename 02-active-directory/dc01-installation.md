@@ -84,7 +84,8 @@ DNS Server: 10.10.10.10
 
 - Open **Server Manager**
 - Click **Manage → Add Roles and Features**
-- 
+
+  
 ![Server Manager](images/dc01-ad-01-server-manager.png)
 
 
@@ -117,11 +118,9 @@ DNS Server: 10.10.10.10
 ---
 
 ## 3. Deployment Configuration
+-Keep as picture.
+-Type pasword.
 
 ![Domain Name](images/dc01-ad-03-domain-name.png)
 
-- Select **Add a new forest**
-- Root domain name:
 
-```plaintext
-lab.local
