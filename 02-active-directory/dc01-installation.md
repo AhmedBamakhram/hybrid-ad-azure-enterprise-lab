@@ -91,8 +91,10 @@ DNS Server: 10.10.10.10
 - Select **Active Directory Domain Services**
 
 ![Server Manager](images/dc01-ad-02-server-roles.png)
+
+-Hit **Next - Next - Next**
   
-- Click **Add Features → Install**
+- Click **Confirmation → Install**
 - 
 ![Deployment Config](images/dc01-ad-02-deployment-config.png)
 
