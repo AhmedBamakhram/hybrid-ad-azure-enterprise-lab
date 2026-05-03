@@ -98,11 +98,6 @@ DNS Server: 10.10.10.10
  
  ![Deployment Config](images/dc01-ad-10-confrim-installation.png)
   
-- Click **Confirmation → Install**
-  
-![Deployment Config](images/dc01-ad-02-deployment-config.png)
-
-
 
 ---
 
@@ -110,6 +105,8 @@ DNS Server: 10.10.10.10
 
 - Click the notification flag in Server Manager
 - Select **Promote this server to a domain controller**
+  
+![Domain Name](images/dc01-ad-11-confirm-installation.png)
 
 ---
 
