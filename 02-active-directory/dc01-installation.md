@@ -82,12 +82,14 @@ DNS Server: 10.10.10.10
 
 ## 1. Install AD DS Role
 
-![Deployment Config](images/dc01-ad-02-deployment-config.png)
-
 - Open **Server Manager**
 - Click **Manage → Add Roles and Features**
 - Select **Active Directory Domain Services**
 - Click **Add Features → Install**
+- 
+![Deployment Config](images/dc01-ad-02-deployment-config.png)
+
+
 
 ---
 
