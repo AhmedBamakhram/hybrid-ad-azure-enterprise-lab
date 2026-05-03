@@ -123,4 +123,13 @@ DNS Server: 10.10.10.10
 
 ![Domain Name](images/dc01-ad-03-domain-name.png)
 
+---
+
+- Click **Next** through the remaining steps using default settings
+## Prerequisites Check
+
+- Verify that all prerequisite checks pass successfully
+- Ignore warnings if no critical errors are present (expected in lab environments)
+- Click **Install** to proceed with Active Directory configuration
+
 
