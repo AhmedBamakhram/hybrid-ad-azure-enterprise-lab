@@ -132,4 +132,7 @@ DNS Server: 10.10.10.10
 - Ignore warnings if no critical errors are present (expected in lab environments)
 - Click **Install** to proceed with Active Directory configuration
 
+  ![Prerequisite Check](images/dc01-ad-12-prerequisite-check.png)
+  
+
 
