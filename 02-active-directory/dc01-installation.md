@@ -133,6 +133,11 @@ DNS Server: 10.10.10.10
 - Click **Install** to proceed with Active Directory configuration
 
   ![Prerequisite Check](images/dc01-ad-12-prerequisite-check.png)
+
+  ![Applying Settings](images/dc01-ad-11-applying-settings.png)
+
+- The server is applying computer settings during the first restart after Active Directory installation
+- This step finalizes the Domain Controller configuration
   
 
 
