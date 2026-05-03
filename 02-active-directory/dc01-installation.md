@@ -108,6 +108,12 @@ DNS Server: 10.10.10.10
   
 ![Domain Name](images/dc01-ad-11-confirm-installation.png)
 
+## Deployment Cofiguration 
+- Select **Add a new forest**
+- Domain name: ** lab.local**
+- Note: This lab uses `lab.local` as the domain name. You can use any name you prefer. If you plan to publish or expose your environment, choose a unique name to avoid conflicts.
+  ![Domain Name](images/dc01-ad-02-deployment-config.png)
+
 ---
 
 ## 3. Deployment Configuration
