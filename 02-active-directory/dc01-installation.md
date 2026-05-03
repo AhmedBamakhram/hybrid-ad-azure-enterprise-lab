@@ -94,6 +94,9 @@ DNS Server: 10.10.10.10
 
  -Click **Next - Next - Next**
  -Confrim installation selections **click → Install**
+ dc01-ad-10-confrim-installation.png
+ 
+ ![Deployment Config](images/dc01-ad-10-confrim-installation.png)
   
 - Click **Confirmation → Install**
   
