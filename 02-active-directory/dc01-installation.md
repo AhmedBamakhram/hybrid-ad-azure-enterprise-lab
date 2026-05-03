@@ -92,10 +92,11 @@ DNS Server: 10.10.10.10
 
 ![Server Manager](images/dc01-ad-02-server-roles.png)
 
--Hit **Next - Next - Next**
+ -Click **Next - Next - Next**
+ -Confrim installation selections **click → Install**
   
 - Click **Confirmation → Install**
-- 
+  
 ![Deployment Config](images/dc01-ad-02-deployment-config.png)
 
 
