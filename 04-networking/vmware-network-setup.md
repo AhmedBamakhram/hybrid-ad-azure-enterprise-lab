@@ -2,8 +2,10 @@
 
 ## Overview
 
-This lab simulates VLAN segmentation using VMware Workstation Host-only networks.  
-Each VMnet represents a separate VLAN with its own subnet.
+This lab simulates enterprise VLAN segmentation using VMware Workstation Host-only networks.  
+Since VMware Workstation does not support native VLAN tagging (802.1Q), each VLAN is represented using a separate VMnet network.
+
+This design provides logical network isolation similar to real-world VLAN environments.
 
 ---
 
@@ -11,8 +13,8 @@ Each VMnet represents a separate VLAN with its own subnet.
 
 | VMnet | VLAN Name | Network | Purpose |
 |------|----------|--------|--------|
-| VMnet1 | IT | 10.10.10.0/24 | Domain Controller & IT systems |
-| VMnet2 | HR | 10.10.20.0/24 | HR department |
+| VMnet1 | IT | 10.10.10.0/24 | Domain Controller & core IT systems |
+| VMnet2 | HR | 10.10.20.0/24 | Human Resources department |
 | VMnet3 | Finance | 10.10.30.0/24 | Financial systems |
 | VMnet4 | Guest | 10.10.40.0/24 | Guest access (isolated) |
 | VMnet5 | Public | 10.10.50.0/24 | Public-facing services |
@@ -21,18 +23,9 @@ Each VMnet represents a separate VLAN with its own subnet.
 
 ## Create Networks in VMware
 
-Open:
+### 1. Open Virtual Network Editor
+
+Open VMware Workstation Pro:
 
 ```plaintext
 Edit → Virtual Network Editor
-
----
-
-## Notes
-
-- VMware Workstation does not support native VLAN tagging (802.1Q)
-- VLANs are simulated using separate VMnet networks
-- Each VMnet represents an isolated network segment by default
-- Inter-VLAN communication is not available until routing is configured
-- Routing between VLANs will be implemented in a later phase of the lab
-
