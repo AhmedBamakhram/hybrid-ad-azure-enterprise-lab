@@ -84,7 +84,8 @@ DNS Server: 10.10.10.10
 
 - Open **Server Manager**
 - Click **Manage → Add Roles and Features**
-![Server Manager](images/dc01-ad-01-server manager.png)
+- 
+![Server Manager](images/dc01-ad-01-server-manager.png)
 
 - Select **Active Directory Domain Services**
 - Click **Add Features → Install**
