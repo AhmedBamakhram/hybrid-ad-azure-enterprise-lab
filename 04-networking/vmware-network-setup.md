@@ -32,7 +32,7 @@ Edit → Virtual Network Editor
 
 ---
 
-## Notes
+### Notes
 
 - VMware Workstation does not support native VLAN tagging (802.1Q)
 - VLAN segmentation is simulated using separate VMnet networks
