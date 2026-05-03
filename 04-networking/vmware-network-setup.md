@@ -25,3 +25,12 @@ Open:
 
 ```plaintext
 Edit → Virtual Network Editor
+
+## Notes
+
+- VMware Workstation does not support native VLAN tagging (802.1Q)
+- VLANs are simulated using separate VMnet networks
+- Each VMnet represents an isolated network segment by default
+- Inter-VLAN communication is not available until routing is configured
+- Routing between VLANs will be implemented in a later phase of the lab
+
