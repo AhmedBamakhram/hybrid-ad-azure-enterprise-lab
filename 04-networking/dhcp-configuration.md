@@ -13,40 +13,56 @@ Each VLAN has its own DHCP scope with a defined IP range, gateway, and DNS confi
 1. Open **Server Manager**
 
 2. Click:
+   **Manage → Add Roles and Features**
 
-```plaintext
-Manage → Add Roles and Features
-```
+3. In the wizard:
 
-Next - Next - Next
+- Click **Next**
+- Select:
+  - ✔ **Role-based or feature-based installation**
+- Click **Next**
 
- Selecte **Role-based or feature-based installation**
+4. Server Selection:
 
- Next 
+- Keep default:
+  - ✔ **Select destination server (DC01)**
+- Click **Next**
 
- Keep as its **Select destination server**
+5. Server Roles:
 
- Next
- 
-Select role:
-✔ DHCP Server
- Add Features 
- Next - Next - Next - Install
+- Select:
+  - ✔ **DHCP Server**
+- Click **Add Features**
+- Click **Next**
 
- After " Feature installation " 
- Close
+6. Continue:
 
- On server Manager : 
- Click in falg with sclminattion mak 'Notifications'
+- Click **Next → Next → Next**
+- Click **Install**
 
- Click "Complete DHCP congfiguration"
+---
 
- Click Next
+## Complete Installation
 
- Choose :
- ✔ Use the following user's credentials
-LAB\Administrator
+- After the feature installation completes, click **Close**
 
-Click Commit
-Then Close
- 
+---
+
+## Post-Install DHCP Configuration
+
+1. In **Server Manager**, click the **notification flag (⚠️)**
+
+2. Click:
+   **Complete DHCP configuration**
+
+3. Click **Next**
+
+4. Authorization:
+
+- Select:
+  - ✔ **Use the following user's credentials**
+  - `LAB\Administrator`
+
+5. Click **Commit**
+
+6. Click **Close**
