@@ -16,3 +16,37 @@ Each VLAN has its own DHCP scope with a defined IP range, gateway, and DNS confi
 
 ```plaintext
 Manage → Add Roles and Features
+```
+
+Next - Next - Next
+
+ Selecte **Role-based or feature-based installation**
+
+ Next 
+
+ Keep as its **Select destination server**
+
+ Next
+ 
+Select role:
+✔ DHCP Server
+ Add Features 
+ Next - Next - Next - Install
+
+ After " Feature installation " 
+ Close
+
+ On server Manager : 
+ Click in falg with sclminattion mak 'Notifications'
+
+ Click "Complete DHCP congfiguration"
+
+ Click Next
+
+ Choose :
+ ✔ Use the following user's credentials
+LAB\Administrator
+
+Click Commit
+Then Close
+ 
