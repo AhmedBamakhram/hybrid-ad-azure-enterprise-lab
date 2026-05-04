@@ -57,3 +57,17 @@ For each adapter:
 
 ```plaintext
 ncpa.cpl
+
+## Rename Network Adapters
+
+After confirming that five network adapters are available in Windows, rename each adapter to match its VLAN purpose.
+
+This makes the configuration easier to manage and prevents confusion when assigning IP addresses.
+
+| Original Name | New Name | Purpose |
+|--------------|----------|---------|
+| Ethernet1 | IT | Domain Controller & IT systems |
+| Ethernet2 | HR | HR VLAN |
+| Ethernet3 | Finance | Finance VLAN |
+| Ethernet4 | Guest | Guest VLAN |
+| Ethernet5 | Public | Public services VLAN |
