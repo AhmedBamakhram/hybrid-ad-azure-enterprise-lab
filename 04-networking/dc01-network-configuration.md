@@ -57,7 +57,7 @@ For each adapter:
 
 ```plaintext
 ncpa.cpl
-
+```
 ## Rename Network Adapters
 
 After confirming that five network adapters are available in Windows, rename each adapter to match its VLAN purpose.
