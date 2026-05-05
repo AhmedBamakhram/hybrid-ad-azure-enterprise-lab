@@ -19,15 +19,15 @@ Before configuring RRAS, DC01 must have:
 
 ---
 
-## VLAN Gateway Configuration
+## VLAN Configuration
 
-| VLAN | Network | DC01 Gateway IP |
-|---|---|---|
-| IT | 10.10.10.0/24 | 10.10.10.1 |
-| HR | 10.10.20.0/24 | 10.10.20.1 |
-| Finance | 10.10.30.0/24 | 10.10.30.1 |
-| Guest | 10.10.40.0/24 | 10.10.40.1 |
-| Servers | 10.10.50.0/24 | 10.10.50.1 |
+| VLAN Name | Network | Gateway (DC01) |
+|----------|--------|----------------|
+| IT       | 10.10.10.0/24 | 10.10.10.1 |
+| HR       | 10.10.20.0/24 | 10.10.20.1 |
+| Finance  | 10.10.30.0/24 | 10.10.30.1 |
+| Guest    | 10.10.40.0/24 | 10.10.40.1 |
+| Public   | 10.10.50.0/24 | 10.10.50.1 |
 
 > Note: Default gateway should be left blank on the internal VLAN interfaces.
 
