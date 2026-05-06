@@ -129,7 +129,6 @@ DHCP is handled by **DC01**, not pfSense.
 
 From a client on VMnet1:
 
-
 DHCP is handled by **DC01**, not pfSense.
 
 ---
@@ -350,7 +349,7 @@ pfSense CE installed and configured as the main firewall. WAN via VMnet8, LAN vi
 - Ensure client is on VMnet1.
 - Test: ping 10.10.10.254
 
-- 
+  
 ### WAN has no internet
 Check:
 - Status → Interfaces  
