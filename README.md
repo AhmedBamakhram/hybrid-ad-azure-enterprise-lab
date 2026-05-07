@@ -63,23 +63,21 @@ The lab simulates a real-world corporate network including Active Directory, Gro
 - Active Directory user and permissions management
 
 ---
-
 ## Technologies Used
 
-- :contentReference[oaicite:0]{index=0}
-- :contentReference[oaicite:1]{index=1}
-- :contentReference[oaicite:2]{index=2}
-- [Microsoft Azure](https://azure.microsoft.com?utm_source=chatgpt.com)
-- [Microsoft Entra ID](https://www.microsoft.com/en-us/security/business/microsoft-entra?utm_source=chatgpt.com)
-- [Microsoft Intune](https://www.microsoft.com/en-us/security/business/microsoft-intune?utm_source=chatgpt.com)
-- :contentReference[oaicite:6]{index=6}
-- :contentReference[oaicite:7]{index=7}
+- Windows Server 2025
+- Windows 10/11
+- VMware Workstation Pro
+- Microsoft Azure
+- Microsoft Entra ID
+- Microsoft Intune
+- pfSense Firewall
+- PowerShell
 - Active Directory Domain Services (AD DS)
 - DNS / DHCP
 - RRAS (Routing and Remote Access Service)
 - VLAN Segmentation
 - Virtual Networking
-
 ---
 
 ## Author
