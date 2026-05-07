@@ -29,6 +29,7 @@ Open:
 
 ```text
 pfSense VM > Settings
+```
 
 Add the following network adapters:
 
