@@ -1,444 +1,261 @@
-# 16 - pfSense Inter-VLAN Routing and Firewall Rules
+# 16 — pfSense Inter‑VLAN Routing and Firewall Rules
 
 ## Overview
-
-In this step, pfSense was expanded from a basic WAN/LAN firewall into a multi-interface router/firewall for all lab networks.
-
-Additional VMware network adapters were added to pfSense for HR, Finance, Guest, and Public networks. Each interface was assigned a static gateway IP address, then firewall rules were configured to control traffic between networks.
+pfSense was expanded from a basic WAN/LAN firewall into a full multi-interface router/firewall for all lab networks.  
+Additional VMware network adapters were added for HR, Finance, Guest, and Public networks.  
+Each interface received a static gateway IP, and firewall rules were created to control inter‑VLAN traffic.
 
 ---
 
 ## Network Design
 
-| VMnet | VLAN Name | Network | pfSense Gateway |
-|---|---|---|---|
-| VMnet1 | IT | 10.10.10.0/24 | 10.10.10.254 |
-| VMnet2 | HR | 10.10.20.0/24 | 10.10.20.254 |
-| VMnet3 | Finance | 10.10.30.0/24 | 10.10.30.254 |
-| VMnet4 | Guest | 10.10.40.0/24 | 10.10.40.254 |
-| VMnet5 | Public | 10.10.50.0/24 | 10.10.50.254 |
-| VMnet8 | WAN | 192.168.88.0/24 | DHCP |
+| VMnet  | VLAN Name | Network        | pfSense Gateway |
+|--------|-----------|----------------|-----------------|
+| VMnet1 | IT        | 10.10.10.0/24  | 10.10.10.254    |
+| VMnet2 | HR        | 10.10.20.0/24  | 10.10.20.254    |
+| VMnet3 | Finance   | 10.10.30.0/24  | 10.10.30.254    |
+| VMnet4 | Guest     | 10.10.40.0/24  | 10.10.40.254    |
+| VMnet5 | Public    | 10.10.50.0/24  | 10.10.50.254    |
+| VMnet8 | WAN       | 192.168.88.0/24 (DHCP) |
 
 ---
 
-## Step 1 - Add Network Adapters to pfSense in VMware
+## Step 1 — Add Network Adapters to pfSense (VMware)
 
-Power off the pfSense VM before adding adapters.
+Power off pfSense → open **Settings** → add adapters:
 
-Open:
+| Adapter | VMnet  | Purpose          |
+|---------|--------|------------------|
+| 1       | VMnet8 | WAN / Internet   |
+| 2       | VMnet1 | IT / LAN         |
+| 3       | VMnet2 | HR               |
+| 4       | VMnet3 | Finance          |
+| 5       | VMnet4 | Guest            |
+| 6       | VMnet5 | Public           |
 
-```text
-pfSense VM > Settings
-```
+Enable:
+- Connected  
+- Connect at power on  
+- Custom: Specific VMnet  
 
-Add the following network adapters:
+---
 
-Adapter	VMware Network	Purpose
-Network Adapter 1	VMnet8	WAN / Internet
-Network Adapter 2	VMnet1	IT / LAN
-Network Adapter 3	VMnet2	HR
-Network Adapter 4	VMnet3	Finance
-Network Adapter 5	VMnet4	Guest
-Network Adapter 6	VMnet5	Public
+## Step 2 — Assign Interfaces (pfSense Console)
 
-For each adapter, enable:
+Console → **1) Assign Interfaces**
 
-Connected
-Connect at power on
-Custom: Specific VMnet
-Step 2 - Assign Interfaces in pfSense Console
+When asked *“Should VLANs be set up now?”* → `n`
 
-Power on pfSense.
+Assign:
 
-From the pfSense console menu, select:
+| pfSense Interface | NIC | Network          |
+|-------------------|-----|------------------|
+| WAN               | em0 | VMnet8           |
+| LAN               | em1 | VMnet1 / IT      |
+| OPT1              | em2 | VMnet2 / HR      |
+| OPT2              | em3 | VMnet3 / Finance |
+| OPT3              | em4 | VMnet4 / Guest   |
+| OPT4              | em5 | VMnet5 / Public  |
 
-1) Assign Interfaces
+Proceed → `y`
 
-When asked:
+---
 
-Should VLANs be set up now?
+## Step 3 — Configure Interface IPs (Console)
 
-Enter:
+Console → **2) Set interface(s) IP address**
 
-n
+### HR (OPT1)
+- IPv4: `10.10.20.254`
+- Subnet: `/24`
+- Gateway: *none*
+- DHCP: n  
+- WebConfigurator: n  
 
-Assign interfaces as follows:
+### Finance (OPT2)
+- IPv4: `10.10.30.254`
+- Subnet: `/24`
+- Gateway: *none*
 
-pfSense Interface	NIC	Network
-WAN	em0	VMnet8
-LAN	em1	VMnet1 / IT
-OPT1	em2	VMnet2 / HR
-OPT2	em3	VMnet3 / Finance
-OPT3	em4	VMnet4 / Guest
-OPT4	em5	VMnet5 / Public
+### Guest (OPT3)
+- IPv4: `10.10.40.254`
+- Subnet: `/24`
 
-When asked to proceed, enter:
+### Public (OPT4)
+- IPv4: `10.10.50.254`
+- Subnet: `/24`
 
-y
-Step 3 - Configure Interface IP Addresses from pfSense Console
+---
 
-From the pfSense console menu, select:
+## Step 4 — Rename Interfaces (pfSense GUI)
 
-2) Set interface(s) IP address
+Open: `https://10.10.10.254`
 
-Configure each interface using static IPv4 addresses.
+Interfaces → rename:
 
-Configure HR Interface
+| Original | New Name |
+|----------|----------|
+| OPT1     | HR       |
+| OPT2     | Finance  |
+| OPT3     | Guest    |
+| OPT4     | Public   |
 
-Select:
+Verify:
 
-OPT1
+| Interface | IPv4 Address     |
+|-----------|------------------|
+| HR        | 10.10.20.254/24  |
+| Finance   | 10.10.30.254/24  |
+| Guest     | 10.10.40.254/24  |
+| Public    | 10.10.50.254/24  |
 
-Set:
+Save → Apply
 
-IPv4 address: 10.10.20.254
-Subnet bit count: 24
-Upstream gateway: Press Enter for none
-IPv6: n
-DHCP server: n
-HTTP webConfigurator: n
-Configure Finance Interface
+---
 
-Select:
+## Step 5 — Update DHCP Scope Options (DC01)
 
-OPT2
+DHCP → Scope Options → **003 Router**
 
-Set:
+| Scope   | Router (003)     |
+|---------|-------------------|
+| IT      | 10.10.10.254      |
+| HR      | 10.10.20.254      |
+| Finance | 10.10.30.254      |
+| Guest   | 10.10.40.254      |
+| Public  | 10.10.50.254      |
 
-IPv4 address: 10.10.30.254
-Subnet bit count: 24
-Upstream gateway: Press Enter for none
-IPv6: n
-DHCP server: n
-HTTP webConfigurator: n
-Configure Guest Interface
+DNS (006): `10.10.10.10`
 
-Select:
+---
 
-OPT3
+## Step 6 — Firewall Rule Design
 
-Set:
+| Network | Policy                                      |
+|---------|----------------------------------------------|
+| IT      | Full access                                  |
+| HR      | Access to IT + Internet                      |
+| Finance | Access to IT + Internet                      |
+| Guest   | Internet only (no internal access)           |
+| Public  | Future DMZ / hosted services                 |
 
-IPv4 address: 10.10.40.254
-Subnet bit count: 24
-Upstream gateway: Press Enter for none
-IPv6: n
-DHCP server: n
-HTTP webConfigurator: n
-Configure Public Interface
+---
 
-Select:
+## Step 7 — IT Firewall Rule
 
-OPT4
+Firewall → Rules → **LAN**
 
-Set:
+Keep default: Pass | LAN net → any
 
-IPv4 address: 10.10.50.254
-Subnet bit count: 24
-Upstream gateway: Press Enter for none
-IPv6: n
-DHCP server: n
-HTTP webConfigurator: n
-Step 4 - Rename Interfaces in pfSense GUI
 
-Open pfSense Web GUI:
+---
 
-https://10.10.10.254
+## Step 8 — HR Firewall Rule
 
-Go to:
+Firewall → Rules → **HR**
+Action: Pass
+Source: HR net
+Destination: Any
+Description: Allow HR to IT and Internet
 
-Interfaces
 
-Rename interface descriptions:
+Apply.
 
-Original Name	New Description
-OPT1	HR
-OPT2	Finance
-OPT3	Guest
-OPT4	Public
+---
 
-For each interface:
+## Step 9 — Finance Firewall Rule
 
-Enable interface
-Description: HR / Finance / Guest / Public
-IPv4 Configuration Type: Static IPv4
+Firewall → Rules → **Finance**
 
-Verify IP addresses:
+Action: Pass
+Source: Finance net
+Destination: Any
+Description: Allow Finance to IT and Internet
 
-Interface	IPv4 Address
-HR	10.10.20.254/24
-Finance	10.10.30.254/24
-Guest	10.10.40.254/24
-Public	10.10.50.254/24
 
-Click:
+Apply.
 
-Save > Apply Changes
-Step 5 - Update DHCP Scope Options on DC01
+---
 
-On DC01, open:
+## Step 10 — Guest Firewall Rules
 
-Server Manager > Tools > DHCP
+Guest must reach Internet only.
 
-For each scope, update:
+Firewall → Rules → **Guest**
 
-Scope Options > 003 Router
+### Rule 1 — Block Guest → IT
 
-Use the correct gateway for each network:
+Block | Guest net → LAN net
 
-DHCP Scope	003 Router
-IT	10.10.10.254
-HR	10.10.20.254
-Finance	10.10.30.254
-Guest	10.10.40.254
-Public	10.10.50.254
+### Rule 2 — Block Guest → HR
 
-DNS option:
+Block | Guest net → HR net
 
-006 DNS Servers: 10.10.10.10
-Step 6 - Firewall Rule Design
 
-The final firewall design is:
+### Rule 3 — Block Guest → Finance
 
-Network	Access Policy
-IT	Full access
-HR	Access to IT and internet
-Finance	Access to IT and internet
-Guest	Internet only
-Public	Reserved for future hosted services / DMZ
-Step 7 - IT Firewall Rule
+Block | Guest net → Finance net
 
-Go to:
 
-Firewall > Rules > LAN
+### Rule 4 — Allow Guest → Internet
+Placed **below** block rules:
 
-Keep the default allow rule:
+Pass | Guest net → Any
+Description: Allow Guest Internet Access
 
-Pass | LAN net | any
 
-This allows IT administrators to access all networks.
+Apply.
 
-Step 8 - HR Firewall Rule
+---
 
-Go to:
+## Step 11 — Public Firewall Rule
 
-Firewall > Rules > HR
+Firewall → Rules → **Public**
 
-Add or keep:
+Pass | Public net → Any
+Description: Allow Public Internet Access
 
-Field	Value
-Action	Pass
-Interface	HR
-Address Family	IPv4
-Protocol	Any
-Source	HR net
-Destination	Any
+---
 
-Description:
+## Step 12 — Testing
 
-Allow HR to IT and Internet
-
-Click:
-
-Save > Apply Changes
-Step 9 - Finance Firewall Rule
-
-Go to:
-
-Firewall > Rules > Finance
-
-Add or keep:
-
-Field	Value
-Action	Pass
-Interface	Finance
-Address Family	IPv4
-Protocol	Any
-Source	Finance net
-Destination	Any
-
-Description:
-
-Allow Finance to IT and Internet
-
-Click:
-
-Save > Apply Changes
-Step 10 - Guest Firewall Rules
-
-Guest should access the internet only and should not access internal networks.
-
-Go to:
-
-Firewall > Rules > Guest
-
-Create the following rules in order.
-
-Guest Rule 1 - Block Guest to IT
-Field	Value
-Action	Block
-Interface	Guest
-Address Family	IPv4
-Protocol	Any
-Source	Guest net
-Destination	LAN net
-
-Description:
-
-Block Guest to IT
-Guest Rule 2 - Block Guest to HR
-Field	Value
-Action	Block
-Interface	Guest
-Address Family	IPv4
-Protocol	Any
-Source	Guest net
-Destination	HR net
-
-Description:
-
-Block Guest to HR
-Guest Rule 3 - Block Guest to Finance
-Field	Value
-Action	Block
-Interface	Guest
-Address Family	IPv4
-Protocol	Any
-Source	Guest net
-Destination	Finance net
-
-Description:
-
-Block Guest to Finance
-Guest Rule 4 - Allow Guest to Internet
-
-Place this rule below the block rules.
-
-Field	Value
-Action	Pass
-Interface	Guest
-Address Family	IPv4
-Protocol	Any
-Source	Guest net
-Destination	Any
-
-Description:
-
-Allow Guest Internet Access
-
-Click:
-
-Save > Apply Changes
-Step 11 - Public Firewall Rule
-
-For now, the Public network is reserved for future hosted services such as a web server or DMZ service.
-
-Go to:
-
-Firewall > Rules > Public
-
-Add:
-
-Field	Value
-Action	Pass
-Interface	Public
-Address Family	IPv4
-Protocol	Any
-Source	Public net
-Destination	Any
-
-Description:
-
-Allow Public Internet Access
-
-This allows future public-facing servers to reach the internet for updates, DNS, certificate renewal, and package downloads.
-
-Step 12 - Testing
-Test HR Client
-
-Connect a test client to:
-
-VMnet2
-
-Run:
-
-ipconfig /release
-ipconfig /renew
-ipconfig /all
-
+### HR Client (VMnet2)
 Expected:
-
-IP Address: 10.10.20.x
-Default Gateway: 10.10.20.254
-DNS Server: 10.10.10.10
+- IP: `10.10.20.x`
+- Gateway: `10.10.20.254`
+- DNS: `10.10.10.10`
 
 Test:
-
 ping 10.10.20.254
 ping 10.10.10.10
 ping 8.8.8.8
-Test Finance Client
 
-Connect a test client to:
 
-VMnet3
-
+### Finance Client (VMnet3)
 Expected:
+- IP: `10.10.30.x`
+- Gateway: `10.10.30.254`
 
-IP Address: 10.10.30.x
-Default Gateway: 10.10.30.254
-DNS Server: 10.10.10.10
-
-Test:
-
-ping 10.10.30.254
-ping 10.10.10.10
-ping 8.8.8.8
-Test Guest Client
-
-Connect a test client to:
-
-VMnet4
-
+### Guest Client (VMnet4)
 Expected:
+- IP: `10.10.40.x`
+- Gateway: `10.10.40.254`
 
-IP Address: 10.10.40.x
-Default Gateway: 10.10.40.254
-DNS Server: 10.10.10.10
+Guest:
+- Internet works  
+- Internal networks blocked  
 
-Guest should reach the internet:
+---
 
-ping 8.8.8.8
+## Step 13 — Snapshot
 
-Guest should not reach internal networks:
+**Name:** pfSense Inter‑VLAN Routing and Firewall Rules Configured  
+**Description:** pfSense configured with IT, HR, Finance, Guest, Public interfaces, static gateways, DHCP updates, and firewall rules.
 
-ping 10.10.10.10
-ping 10.10.20.254
-ping 10.10.30.254
+---
 
-Expected result:
+## Final Architecture
 
-Internal network access blocked
-Internet access allowed
-Step 13 - Snapshot
-
-After successful testing, create a VMware snapshot.
-
-Snapshot name:
-
-pfSense Inter-VLAN Routing and Firewall Rules Configured
-
-Snapshot description:
-
-pfSense configured with dedicated interfaces for IT, HR, Finance, Guest, and Public networks. Static gateway IPs assigned, DHCP scopes updated, and firewall rules configured. IT has full access, HR and Finance have access to IT and internet, Guest is restricted to internet only, and Public is reserved for future hosted services.
-Key Concepts
-VMware VMnets are used to simulate VLAN segmentation.
-pfSense acts as the central router and firewall.
-DC01 remains responsible for Active Directory, DNS, and DHCP.
-RRAS is no longer used for routing.
-Firewall rules are applied on the source interface where traffic enters pfSense.
-Guest traffic is restricted using block rules above an allow-internet rule.
-Final Architecture
 Internet
    |
 VMnet8 / WAN
@@ -450,3 +267,4 @@ pfSense
 IT       HR         Finance     Guest           Public
 VMnet1   VMnet2     VMnet3      VMnet4          VMnet5
 10.10.10 10.10.20   10.10.30    10.10.40        10.10.50
+
