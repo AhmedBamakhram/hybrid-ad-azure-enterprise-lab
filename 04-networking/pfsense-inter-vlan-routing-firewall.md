@@ -254,8 +254,10 @@ Guest:
 
 ---
 
+
 ## Final Architecture
 
+```text
 Internet
    |
 VMnet8 / WAN
@@ -267,4 +269,5 @@ pfSense
 IT       HR         Finance     Guest           Public
 VMnet1   VMnet2     VMnet3      VMnet4          VMnet5
 10.10.10 10.10.20   10.10.30    10.10.40        10.10.50
+```
 
